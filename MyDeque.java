@@ -60,19 +60,60 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
-    if ()
+    if (size > 0){
+      if (size <= data.length) {
+        if (end + 1 < data.length) {
+          end++;
+          data[end] = element;
+        } else {
+          end = 0;
+          data[end] = element;
+        }
+      }
+    } else {
+      data[end] = element;
+    }
     size++;
   }
   public E removeFirst(){
+    E removed = getFirst();
+    if (size > 1) {
+      if (size <= data.length) {
+        if (start+1 < data.length) {
+          data[start] = null;
+          start++;
+        } else {
+          data[start] = null;
+          start = 0;
+        }
+      }
+    } else {
+      data[start] = null;
+    }
     size--;
+    return removed;
   }
+  
   public E removeLast(){
+    E removed = getLast();
+    if (size > 1) {
+      if (size <= data.length) {
+        if (end - 1 >= 0) {
+          data[end] = null;
+          end--;
+        } else {
+          data[end] = null;
+          end = data.length - 1;
+        }
+      }
+    }
     size--;
+    return removed;
   }
   public E getFirst(){
-
+    return data[start];
   }
   public E getLast(){
-
+    return data[end];
   }
 }
