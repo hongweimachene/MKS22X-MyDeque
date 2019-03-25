@@ -44,14 +44,15 @@ public class MyDeque<E>{
 
   public void addFirst(E element){
     if (size > 0) {
-      if (size <= data.length) {
-        if (start - 1 >= 0) {
-          start--;
-          data[start] = element;
-        } else {
-          start = data.length-1;
-          data[start] = element;
-        }
+      if (size + 1 > data.length) {
+        resize();
+      }
+      if (start - 1 >= 0) {
+        start--;
+        data[start] = element;
+      } else {
+        start = data.length-1;
+        data[start] = element;
       }
     } else {
       data[start] = element;
@@ -61,14 +62,15 @@ public class MyDeque<E>{
 
   public void addLast(E element){
     if (size > 0){
-      if (size <= data.length) {
-        if (end + 1 < data.length) {
-          end++;
-          data[end] = element;
-        } else {
-          end = 0;
-          data[end] = element;
-        }
+      if (size+1 > data.length) {
+        resize();
+      }
+      if (end + 1 < data.length) {
+        end++;
+        data[end] = element;
+      } else {
+        end = 0;
+        data[end] = element;
       }
     } else {
       data[end] = element;
@@ -78,14 +80,12 @@ public class MyDeque<E>{
   public E removeFirst(){
     E removed = getFirst();
     if (size > 1) {
-      if (size <= data.length) {
-        if (start+1 < data.length) {
-          data[start] = null;
-          start++;
-        } else {
-          data[start] = null;
-          start = 0;
-        }
+      if (start+1 < data.length) {
+        data[start] = null;
+        start++;
+      } else {
+        data[start] = null;
+        start = 0;
       }
     } else {
       data[start] = null;
@@ -93,18 +93,16 @@ public class MyDeque<E>{
     size--;
     return removed;
   }
-  
+
   public E removeLast(){
     E removed = getLast();
     if (size > 1) {
-      if (size <= data.length) {
-        if (end - 1 >= 0) {
-          data[end] = null;
-          end--;
-        } else {
-          data[end] = null;
-          end = data.length - 1;
-        }
+      if (end - 1 >= 0) {
+        data[end] = null;
+        end--;
+      } else {
+        data[end] = null;
+        end = data.length - 1;
       }
     }
     size--;
