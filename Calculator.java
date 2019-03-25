@@ -13,6 +13,14 @@ public class Calculator{
         } else {
           if (data[i].equals("+")) {
             result = stack.removeFirst() + stack.removeFirst();
+          } else if (data[i].equals("-")) {
+            result = stack.removeFirst() - stack.removeFirst();
+          } else if (data[i].equals("*")) {
+            result = stack.removeFirst() * stack.removeFirst();
+          } else if (data[i].equals("/")) {
+            result = stack.removeFirst() / stack.removeFirst();
+          } else if (data[i].equals("%")) {
+            result = stack.removeFirst() % stack.removeFirst();
           }
         }
       }
