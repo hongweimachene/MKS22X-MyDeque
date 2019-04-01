@@ -34,11 +34,7 @@ public class MyDeque<E>{
     if (start < end) {
       for (int i = start; i < end+1; i++) {
         if (data[i] != null) {
-          if (i == end){
-            s+=data[i];
-          } else {
-            s+=data[i] + " ";
-          }
+          s+=data[i] + " ";
         }
       }
     } else if (start > end) {
@@ -47,11 +43,7 @@ public class MyDeque<E>{
         s+=data[i] + " ";
       }
       for (int i = 0; i < end + 1; i++) {
-        if (i == end) {
-          s+= data[i];
-        } else {
           s+=data[i] + " ";
-        }
       }
     } else {
       if (data[start] != null) s+=data[start];
